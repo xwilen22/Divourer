@@ -1,0 +1,30 @@
+{
+
+    "manifest_version": 2,
+    "name": "Divourer",
+    "version": "1.0",
+  
+    "description": "Removes elements by pointing and clicking",
+  
+    "icons": {
+        "48": "icons/divour-48.png"
+    },
+    
+    "permissions": [
+        "activeTab"
+    ],
+    
+    "browser_action": {
+        "default_icon": "icons/divour-48.png",
+        "default_title": "Divourer",
+        "default_popup": "popup/controlpanel.html"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["divourer.js"]
+        }
+    ]
+  
+}
