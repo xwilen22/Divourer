@@ -10,8 +10,8 @@ const CSS_DIVOURER_ACTIVE = `
     html {
         cursor: ${POINTER_NAME}
     }
-    html:hover {
-        cursor: ${POINTER_NAME}
+    html:hover, a:hover, button:hover {
+        cursor: ${POINTER_NAME} !important
     }
 `
 
@@ -80,13 +80,9 @@ function requestUIStatus() {
         browser.tabs.sendMessage(tabs[0].id, {
             command
         })
-        .catch((exception) => {
-            onException(exception)
-        })
+        .catch(onException)
     })
-    .catch((exception) => {
-        onException(exception)
-    })
+    .catch(onException)
 }
 
 function onException(exception) {
