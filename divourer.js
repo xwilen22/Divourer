@@ -34,7 +34,8 @@
             if(!requestHideOnClick()) {
                 return
             }
-    
+            event.preventDefault()
+            
             console.log(`Mouse click: X ${event.clientX}, Y ${event.clientY}`)
             hideElementAtPosition(event.clientX, event.clientY)
         })
@@ -56,6 +57,17 @@
             case "reset" : {
                 clearAll()
                 break;
+            }
+            case "get" : {
+                browser.runtime.sendMessage({
+                    data: {
+                        active: hideOnClickActive,
+                        hiddenElements
+                    }
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
             }
         }
     })
