@@ -9,13 +9,13 @@
 
     function hideElementAtPosition(x, y) {
         let retrievedElement = document.elementFromPoint(x, y)
+        hiddenElements.push({element: retrievedElement, initialStyle: retrievedElement.style})
         retrievedElement.style.display = "none"
-        hiddenElements.push(retrievedElement)
     }
 
     function clearAll() {
-        for(element in hiddenElements) {
-            element.style.display = "initial"
+        for(elementObject of hiddenElements) {
+            elementObject.element.style = elementObject.initialStyle
         }
     }
     
@@ -66,6 +66,7 @@
                 .catch((error) => {
                     console.error(error)
                 })
+                break;
             }
         }
     })
