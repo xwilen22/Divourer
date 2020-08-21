@@ -8,10 +8,10 @@ const POINTER_NAME = "crosshair"
 
 const CSS_DIVOURER_ACTIVE = `
     html {
-        cursor: ${POINTER_NAME}
+        cursor: ${POINTER_NAME};
     }
     html:hover, a:hover, button:hover {
-        cursor: ${POINTER_NAME} !important
+        cursor: ${POINTER_NAME} !important;
     }
 `
 
@@ -103,7 +103,7 @@ browser.runtime.onMessage.addListener((message) => {
     let dataObject = message.data
     if(dataObject != undefined) {
         console.log("Retrieved data! ", dataObject)
-
+        divourActive = dataObject.active
         document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
     }
 })

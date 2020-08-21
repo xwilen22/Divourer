@@ -1,5 +1,4 @@
 {
-
     "manifest_version": 2,
     "name": "Divourer",
     "version": "1.0",
@@ -11,9 +10,14 @@
     },
     
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "menus"
     ],
-    
+
+    "background": {
+        "scripts": ["contextMenu.js"]
+    },
+
     "browser_action": {
         "default_icon": "icons/divour-48.png",
         "default_title": "Divourer",
@@ -23,7 +27,9 @@
     "content_scripts": [
         {
             "matches": ["*://*/*"],
-            "js": ["divourer.js"]
+            "js": [
+                "divourer.js"
+            ]
         }
     ]
   

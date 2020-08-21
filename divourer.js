@@ -30,13 +30,10 @@
 
     function initializeEventListeners() {
         document.addEventListener("click", (event) => {
-            console.log("CLICK? ", requestHideOnClick())
             if(!requestHideOnClick()) {
                 return
             }
             event.preventDefault()
-
-            console.log(`Mouse click: X ${event.clientX}, Y ${event.clientY}`)
             hideElementAtPosition(event.clientX, event.clientY)
         })
     }
@@ -59,10 +56,11 @@
                 break;
             }
             case "get" : {
+                console.log(hiddenElements)
                 browser.runtime.sendMessage({
                     data: {
-                        active: hideOnClickActive,
-                        hiddenElements
+                        active: hideOnClickActive/*,
+                        hiddenElements*/
                     }
                 })
                 .catch((error) => {
