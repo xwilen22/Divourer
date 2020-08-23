@@ -1,5 +1,9 @@
 const ID_MENU_QUICK_HIDE = "menu-fast-hide"
 
+function onException(error) {
+    console.error(error)
+}
+
 function initializeContextMenus() {
     browser.menus.create({
         id: ID_MENU_QUICK_HIDE,
@@ -15,7 +19,14 @@ function initializeListeners() {
     browser.menus.onClicked.addListener((info, tab) => {
         switch (info.menuItemId) {
             case ID_MENU_QUICK_HIDE:
-                console.log("INFO: ", info, tab);
+                const command = "hide"
+
+                browser.tabs.sendMessage(tab.id, {
+                    command,
+                    data: info.targetElementId
+                })
+                .catch(onException)
+                console.log("INFO: ", info, "| TAB: ", tab, "| ELEMENT: ", browser.menus.getTargetElement(info.targetElementId));
                 break;
         }
     })
