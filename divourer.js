@@ -8,8 +8,7 @@
     let hideOnClickActive = false
 
     function hideElementAtPosition(x, y) {
-        let retrievedElement = document.elementFromPoint(x, y)
-        hideElement(element)
+        hideElement(document.elementFromPoint(x, y))
     }
     function hideElement(element) {
         hiddenElements.push({element, initialStyle: element.style})
@@ -19,17 +18,15 @@
         for(elementObject of hiddenElements) {
             elementObject.element.style = elementObject.initialStyle
         }
+        hiddenElements.splice(0, hiddenElements.length)
     }
-    
     function setHideOnClick(enabledBool) {
         console.log("Hide on click called ", enabledBool)
         hideOnClickActive = enabledBool
     }
-
     function requestHideOnClick() {
         return Boolean(hideOnClickActive)
     }
-
     function initializeEventListeners() {
         document.addEventListener("click", (event) => {
             if(!requestHideOnClick()) {
@@ -65,8 +62,8 @@
                 console.log(hiddenElements)
                 browser.runtime.sendMessage({
                     data: {
-                        active: hideOnClickActive/*,
-                        hiddenElements*/
+                        active: hideOnClickActive,
+                        hiddenElements
                     }
                 })
                 .catch((error) => {

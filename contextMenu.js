@@ -18,7 +18,7 @@ function initializeContextMenus() {
 function initializeListeners() {
     browser.menus.onClicked.addListener((info, tab) => {
         switch (info.menuItemId) {
-            case ID_MENU_QUICK_HIDE:
+            case ID_MENU_QUICK_HIDE: {
                 const command = "hide"
 
                 browser.tabs.sendMessage(tab.id, {
@@ -27,7 +27,8 @@ function initializeListeners() {
                 })
                 .catch(onException)
                 console.log("INFO: ", info, "| TAB: ", tab, "| ELEMENT: ", browser.menus.getTargetElement(info.targetElementId));
-                break;
+                break
+            }
         }
     })
 }
