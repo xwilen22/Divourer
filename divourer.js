@@ -63,7 +63,7 @@
                 browser.runtime.sendMessage({
                     data: {
                         active: hideOnClickActive,
-                        hiddenElements
+                        /*hiddenElements*/
                     }
                 })
                 .catch((error) => {
