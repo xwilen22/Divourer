@@ -7,10 +7,10 @@ const TEXT_ARM_BUTTON_DISABLED = "Arm"
 const POINTER_NAME = "crosshair"
 
 const CSS_DIVOURER_ACTIVE = `
-    html {
+    * {
         cursor: ${POINTER_NAME};
     }
-    html:hover, a:hover, button:hover {
+    *:hover {
         cursor: ${POINTER_NAME} !important;
     }
 `
@@ -68,7 +68,6 @@ function onClearButton(event) {
         })
         .catch(onException);
 }
-
 function requestUIStatus() {
     browser.tabs.query({
         currentWindow: true,
@@ -84,7 +83,6 @@ function requestUIStatus() {
     })
     .catch(onException)
 }
-
 function onException(exception) {
     for (button of document.getElementsByTagName("button")) {
         button.disabled = true
