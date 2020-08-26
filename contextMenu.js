@@ -26,7 +26,6 @@ function initializeListeners() {
                     data: info.targetElementId
                 })
                 .catch(onException)
-                console.log("INFO: ", info, "| TAB: ", tab, "| ELEMENT: ", browser.menus.getTargetElement(info.targetElementId));
                 break
             }
         }

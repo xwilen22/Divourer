@@ -1,3 +1,7 @@
+function onException(error) {
+    console.error(error)
+}
+
 (function () {
     if (window.hasRun) {
         return
@@ -21,7 +25,6 @@
         hiddenElements.splice(0, hiddenElements.length)
     }
     function setHideOnClick(enabledBool) {
-        console.log("Hide on click called ", enabledBool)
         hideOnClickActive = enabledBool
     }
     function requestHideOnClick() {
@@ -36,9 +39,9 @@
             hideElementAtPosition(event.clientX, event.clientY)
         })
     }
-    
+
     initializeEventListeners()
-    
+
     browser.runtime.onMessage.addListener((message) => {
         console.log(`Message recieved! ${message.command}`)
         switch(message.command) {
@@ -58,17 +61,14 @@
                 hideElement(browser.menus.getTargetElement(message.data))
                 break;
             }
-            case "get" : {
-                console.log(hiddenElements)
+            case "get" : {  
                 browser.runtime.sendMessage({
                     data: {
                         active: hideOnClickActive,
-                        /*hiddenElements*/
+                        hiddenAmount: hiddenElements.length
                     }
                 })
-                .catch((error) => {
-                    console.error(error)
-                })
+                .catch(onException)
                 break;
             }
         }

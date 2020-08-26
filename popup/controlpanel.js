@@ -1,8 +1,11 @@
 const ID_BUTTON_ARM = "button_toggle_arm"
 const ID_BUTTON_CLEAR = "button_clear"
+const ID_PARAGR_HIDDEN_AMOUNT = "paragr_hidden_amount_tab"
 
 const TEXT_ARM_BUTTON_ENABLED = "Disarm"
 const TEXT_ARM_BUTTON_DISABLED = "Arm"
+
+const TEXT_HIDDEN_AMOUNT = "hidden elements on this tab."
 
 const POINTER_NAME = "crosshair"
 
@@ -24,6 +27,10 @@ function initializeListeners() {
 
     const clearButton = document.getElementById(ID_BUTTON_CLEAR)
     clearButton.addEventListener("click", onClearButton)
+}
+function setHiddenElementsCount(amountNumber) {
+    const paragraphElement = document.getElementById(ID_PARAGR_HIDDEN_AMOUNT)
+    paragraphElement.innerText = `${Number(amountNumber)} ${TEXT_HIDDEN_AMOUNT}`
 }
 function onArmButton(event) {
     const armButton = document.getElementById(ID_BUTTON_ARM)
@@ -62,8 +69,9 @@ function onArmButton(event) {
 function onClearButton(event) {
     browser.tabs.query({active: true, currentWindow: true})
         .then((tabs) => {
+            const command = "reset"
             browser.tabs.sendMessage(tabs[0].id, {
-                command: "reset",
+                command
             })
         })
         .catch(onException);
@@ -75,7 +83,6 @@ function requestUIStatus() {
     })
     .then(tabs => {
         const command = "get"
-
         browser.tabs.sendMessage(tabs[0].id, {
             command
         })
@@ -100,8 +107,8 @@ browser.tabs.executeScript({file: "/divourer.js"})
 browser.runtime.onMessage.addListener((message) => {
     let dataObject = message.data
     if(dataObject != undefined) {
-        console.log("Retrieved data! ", dataObject)
         divourActive = dataObject.active
+        setHiddenElementsCount(dataObject.hiddenAmount)
         document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
     }
 })
