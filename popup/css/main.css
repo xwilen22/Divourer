@@ -1,0 +1,86 @@
+#popup-content {
+    width: 20em
+}
+:root {
+    --font-primary: 'Fira Sans';
+}
+
+/*Typography*/
+h1 {
+    font-family: var(--font-primary);
+    font-size: 28px;
+    font-weight: 300;
+}
+h2 {
+    font-family: var(--font-primary);
+    font-size: 22px;
+    font-weight: 300;
+}
+p {
+    font-family: var(--font-primary);
+    font-size: 17px;
+    font-weight: 400;
+}
+/*Interactives*/
+/*Buttons*/
+button {
+    background-color: var(--grey-90-a10);
+    color: var(--grey-90);
+
+    border: none;
+    border-radius: 2px;
+    
+    height: 32px;
+    width: auto;
+    min-width: 132px;
+
+    padding-left: 8px;
+    padding-right: 8px;
+
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 400;
+}
+button:hover {
+    background-color: var(--grey-90-a20);
+}
+button:focus {
+    box-shadow: 0 0 0 1px #0a84ff inset, 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+}
+button:active {
+    background-color: var(--grey-90-a30);
+}
+button:disabled {
+    opacity: 0.4;
+}
+button:disabled:hover, button:disabled:active {
+    background-color: var(--grey-90-a10);
+}
+
+button.micro {
+    font-size: 11px;
+    min-width: unset;
+    height: 24px;
+}
+
+button.primary {
+    background-color: var(--blue-60);
+    color: #ffffff;
+}
+button:hover.primary {
+    background-color: var(--blue-70);
+}
+button:focus.primary {
+    box-shadow: 0 0 0 1px #0a84ff inset, 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3)
+}
+button:active.primary {
+    background-color: var(--blue-80);
+}
+button:disabled.primary {
+    opacity: 0.4;
+}
+button:disabled:hover.primary, button:disabled:active.primary {
+    background-color: var(--blue-60)
+}
+
+

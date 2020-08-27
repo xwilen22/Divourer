@@ -21,7 +21,6 @@ const CSS_DIVOURER_ACTIVE = `
 let divourActive = false
 
 function initializeListeners() {
-    console.log("Initialized")
     const armButton = document.getElementById(ID_BUTTON_ARM)
     armButton.addEventListener("click", onArmButton)
 
@@ -43,7 +42,7 @@ function onArmButton(event) {
         active: true
     })
     .then((tabs) => {
-        let command = divourActive ? "enabled" : "disabled"
+        const command = divourActive ? "enabled" : "disabled"
         if(divourActive) {
             browser.tabs.insertCSS({code: CSS_DIVOURER_ACTIVE})
             .then(() => {
