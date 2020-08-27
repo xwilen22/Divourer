@@ -21,6 +21,13 @@ p {
     font-size: 17px;
     font-weight: 400;
 }
+/*Layout Utils*/
+.no-style {
+    text-decoration: none;
+    list-style: none;
+    font-style: normal;
+    border-style: none;
+}
 /*Interactives*/
 /*Buttons*/
 button {
