@@ -6,20 +6,26 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="css/photon-colors.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="style.js"></script>
 </head>
 
 <body>
     <div id="popup-content">
-        <h1>Divourer</h1>
-        <p id="paragr_hidden_amount_tab">Currently X hidden elements</p>
-        <ul class="no-style">
-            <li>
-                <button id="button_toggle_arm" class="primary">Arm/Disarm</button>
-            </li>
-            <li>
-                <button id="button_clear" class="micro">Clear</button>
-            </li>
-        </ul>
+        <header>
+            <img src="../icons/divour-48.png" class="icon" />
+            <h1>Divourer</h1>
+        </header>
+        <main>
+            <p id="paragr_hidden_amount_tab">Currently no hidden elements</p>
+            <ul class="no-style">
+                <li>
+                    <button id="button_toggle_arm" class="primary">Arm/Disarm</button>
+                </li>
+                <li>
+                    <button id="button_clear" class="micro">Clear</button>
+                </li>
+            </ul>
+        </main>
     </div>
     <script src="controlpanel.js"></script>
 </body>

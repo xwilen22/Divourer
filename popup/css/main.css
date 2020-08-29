@@ -1,8 +1,16 @@
-#popup-content {
-    width: 20em
-}
 :root {
+    --color-primary: green;
     --font-primary: 'Fira Sans';
+    --width-popup: 20em;
+    --size-icon: 40px;
+}
+#popup-content {
+    width: var(--width-popup)
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-primary)
 }
 
 /*Typography*/
@@ -21,12 +29,39 @@ p {
     font-size: 17px;
     font-weight: 400;
 }
+/*Layout*/
+header {
+    background-color: var(--color-primary);
+    height: var(--size-icon);
+}
+header * {
+    float: left;
+    height: var(--size-icon);
+}
+header h1 {
+    margin: 0 0 0 0.25em;
+    text-align: center;
+}
+main, header {
+    padding: 1em;
+}
+main {
+    background-color: white;
+}
+ul li {
+    margin-top: 0.5em;
+}
 /*Layout Utils*/
 .no-style {
     text-decoration: none;
     list-style: none;
     font-style: normal;
     border-style: none;
+}
+img.icon {
+    width: auto;
+    height: var(--size-icon);
+    border-radius: 2px;
 }
 /*Interactives*/
 /*Buttons*/
@@ -63,13 +98,13 @@ button:disabled {
 button:disabled:hover, button:disabled:active {
     background-color: var(--grey-90-a10);
 }
-
+/*Button Size MICRO*/
 button.micro {
     font-size: 11px;
     min-width: unset;
     height: 24px;
 }
-
+/*Button Color PRIMARY*/
 button.primary {
     background-color: var(--blue-60);
     color: #ffffff;
