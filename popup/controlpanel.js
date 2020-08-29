@@ -22,6 +22,14 @@ const CSS_DIVOURER_ACTIVE = `
     }
 `
 
+const COMMAND = {
+    GET:"get",
+    ENABLE:"enabled",
+    DISABLE:"disabled",
+    CLEAR:"reset",
+    HIDE:"hide"
+}
+
 let divourActive = false
 
 function initializeListeners() {
@@ -46,7 +54,7 @@ function onArmButton(event) {
         active: true
     })
     .then((tabs) => {
-        const command = divourActive ? "enabled" : "disabled"
+        const command = divourActive ? COMMAND.ENABLE : COMMAND.DISABLE
         if(divourActive) {
             browser.tabs.insertCSS({code: CSS_DIVOURER_ACTIVE})
             .then(() => {
@@ -72,9 +80,13 @@ function onArmButton(event) {
 function onClearButton(event) {
     browser.tabs.query({active: true, currentWindow: true})
         .then((tabs) => {
-            const command = "reset"
             browser.tabs.sendMessage(tabs[0].id, {
-                command
+                command: COMMAND.CLEAR
+            })
+            .then(() => {
+                browser.tabs.sendMessage(tabs[0].id, {
+                    command: COMMAND.GET
+                })
             })
         })
         .catch(onException);
@@ -84,10 +96,9 @@ function requestUIStatus() {
         currentWindow: true,
         active: true
     })
-    .then(tabs => {
-        const command = "get"
+    .then(tabs => { 
         browser.tabs.sendMessage(tabs[0].id, {
-            command
+            command: COMMAND.GET
         })
         .catch(onException)
     })
