@@ -31,12 +31,27 @@ function onException(error) {
         return Boolean(hideOnClickActive)
     }
     function initializeEventListeners() {
-        document.addEventListener("click", (event) => {
+        document.addEventListener("mouseover", (event) => {
             if(!requestHideOnClick()) {
                 return
             }
-            event.preventDefault()
-            hideElementAtPosition(event.clientX, event.clientY)
+            let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
+            const initialBackgroundColour = hoverElement.style.backgroundColor
+            hoverElement.style.backgroundColor = "green"
+            
+            function onMouseDown(event) {
+                event.preventDefault()
+                hideElementAtPosition(event.clientX, event.clientY)
+                hoverElement.removeEventListener("mousedown", this)
+            }
+            function onMouseLeave(event) {
+                hoverElement.style.backgroundColor = initialBackgroundColour
+                hoverElement.removeEventListener("mouseout", this)
+                hoverElement.removeEventListener("mousedown", onMouseDown)
+            }
+
+            hoverElement.addEventListener("mousedown", onMouseDown)
+            hoverElement.addEventListener("mouseout", onMouseLeave)
         })
     }
 
