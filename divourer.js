@@ -39,7 +39,7 @@ function onException(error) {
             }
             let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
             const initialBackgroundColour = hoverElement.style.backgroundColor
-            //hoverElement.style.backgroundColor = "green"
+
             hoverElement.classList.add(HOVER_ELEMENT_CLASS)
             console.log("Added class: ", HOVER_ELEMENT_CLASS)
             function onMouseDown(event) {
@@ -49,7 +49,7 @@ function onException(error) {
             }
             function onMouseLeave(event) {
                 hoverElement.classList.remove(HOVER_ELEMENT_CLASS)
-                //hoverElement.style.backgroundColor = initialBackgroundColour
+
                 hoverElement.removeEventListener("mouseout", this)
                 hoverElement.removeEventListener("mousedown", onMouseDown)
             }
