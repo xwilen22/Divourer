@@ -16,6 +16,10 @@ const CSS_DIVOURER_ACTIVE = `
     *:hover {
         cursor: ${POINTER_NAME} !important;
     }
+    .divour-hover-element {
+        transition: background-color 0.2s cubic-bezier(.07,.95,0,1);
+        background-color: green !important;
+    }
 `
 
 let divourActive = false

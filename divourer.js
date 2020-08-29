@@ -8,6 +8,8 @@ function onException(error) {
     }
     window.hasRun = true
     
+    const HOVER_ELEMENT_CLASS = "divour-hover-element"
+
     const hiddenElements = []
     let hideOnClickActive = false
 
@@ -37,15 +39,17 @@ function onException(error) {
             }
             let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
             const initialBackgroundColour = hoverElement.style.backgroundColor
-            hoverElement.style.backgroundColor = "green"
-            
+            //hoverElement.style.backgroundColor = "green"
+            hoverElement.classList.add(HOVER_ELEMENT_CLASS)
+            console.log("Added class: ", HOVER_ELEMENT_CLASS)
             function onMouseDown(event) {
                 event.preventDefault()
                 hideElementAtPosition(event.clientX, event.clientY)
                 hoverElement.removeEventListener("mousedown", this)
             }
             function onMouseLeave(event) {
-                hoverElement.style.backgroundColor = initialBackgroundColour
+                hoverElement.classList.remove(HOVER_ELEMENT_CLASS)
+                //hoverElement.style.backgroundColor = initialBackgroundColour
                 hoverElement.removeEventListener("mouseout", this)
                 hoverElement.removeEventListener("mousedown", onMouseDown)
             }
