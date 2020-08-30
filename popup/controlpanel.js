@@ -1,26 +1,14 @@
+import * as utils from "../util.mjs"
+
 const ID_BUTTON_ARM = "button_toggle_arm"
 const ID_BUTTON_CLEAR = "button_clear"
 const ID_PARAGR_HIDDEN_AMOUNT = "paragr_hidden_amount_tab"
 
 const TEXT_ARM_BUTTON_ENABLED = "Disarm"
 const TEXT_ARM_BUTTON_DISABLED = "Arm"
-
 const TEXT_HIDDEN_AMOUNT = "hidden elements on this tab."
 
 const PATH_CSS_ACTIVE = "../divourer.css"
-
-const COMMAND = {
-    GET:"get",
-    ENABLE:"enabled",
-    DISABLE:"disabled",
-    CLEAR:"reset",
-    HIDE:"hide"
-}
-const COMMAND_LOCATION = {
-    CONTENT: "loc_divourer",
-    ACTION: "loc_browser_action",
-    CONTEXT: "loc_context_menu"
-}
 
 let divourActive = false
 
@@ -46,8 +34,8 @@ function onArmButton(event) {
         active: true
     })
     .then((tabs) => {
-        const command = divourActive ? COMMAND.ENABLE : COMMAND.DISABLE
-        const location = COMMAND_LOCATION.CONTENT
+        const command = divourActive ? utils.COMMAND.ENABLE : utils.COMMAND.DISABLE
+        const location = utils.COMMAND_LOCATION.CONTENT
         if(divourActive) {
             browser.tabs.insertCSS({file: PATH_CSS_ACTIVE, cssOrigin: "user"})
             .then(() => {
@@ -73,17 +61,17 @@ function onArmButton(event) {
     .catch(onException);  
 }
 function onClearButton(event) {
-    const location = COMMAND_LOCATION.CONTENT
+    const location = utils.COMMAND_LOCATION.CONTENT
 
     browser.tabs.query({active: true, currentWindow: true})
         .then((tabs) => {
             browser.tabs.sendMessage(tabs[0].id, {
-                command: COMMAND.CLEAR,
+                command: utils.COMMAND.CLEAR,
                 location
             })
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command: COMMAND.GET,
+                    command: utils.COMMAND.GET,
                     location
                 })
             })
@@ -91,7 +79,7 @@ function onClearButton(event) {
         .catch(onException);
 }
 function requestUIStatus() {
-    const location = COMMAND_LOCATION.CONTENT
+    const location = utils.COMMAND_LOCATION.CONTENT
 
     browser.tabs.query({
         currentWindow: true,
@@ -99,7 +87,7 @@ function requestUIStatus() {
     })
     .then(tabs => { 
         browser.tabs.sendMessage(tabs[0].id, {
-            command: COMMAND.GET,
+            command: utils.COMMAND.GET,
             location
         })
         .catch(onException)
@@ -113,19 +101,21 @@ function onException(exception) {
     console.error(`BOLLOXED! ${exception} Stack: ${exception.stack}`)
 }
 
-browser.tabs.executeScript({file: "/divourer.js"})
-.then(() => {
-    requestUIStatus()
-    initializeListeners()
-})
-.catch(onException)
-
-browser.runtime.onMessage.addListener((message) => {
-    let dataObject = message.data
-    if(dataObject != undefined) {
-        divourActive = dataObject.active
-        setHiddenElementsCount(dataObject.hiddenAmount)
-
-        document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
-    }
-})
+window.onload = (event) => {
+    browser.tabs.executeScript({file: "/divourer.js"})
+    .then(() => {
+        requestUIStatus()
+        initializeListeners()
+    })
+    .catch(onException)
+    
+    browser.runtime.onMessage.addListener((message) => {
+        let dataObject = message.data
+        if(dataObject != undefined) {
+            divourActive = dataObject.active
+            setHiddenElementsCount(dataObject.hiddenAmount)
+    
+            document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
+        }
+    })
+}
