@@ -14,7 +14,7 @@ const CSS_DIVOURER_ACTIVE = `
         --cursor-enabled: crosshair;
         --size-outline: 2px;
     }
-    * {
+    * { 
         cursor: var(--cursor-enabled);
     }
     *:hover {

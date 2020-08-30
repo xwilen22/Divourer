@@ -45,6 +45,11 @@ function onException(error) {
         return Boolean(hideOnClickActive)
     }
     function initializeEventListeners() {
+        document.addEventListener("click", (event) => {
+            if (requestHideOnClick()) {
+                event.preventDefault()
+            }
+        })
         document.addEventListener("mouseover", (event) => {
             if(!requestHideOnClick()) {
                 return
@@ -53,8 +58,6 @@ function onException(error) {
             if(hoverElement == document.body || hoverElement == document.documentElement) { 
                 return 
             }
-
-            const initialBackgroundColour = hoverElement.style.backgroundColor
 
             hoverElement.classList.add(HOVER_ELEMENT_CLASS)
             function onMouseDown(event) {
