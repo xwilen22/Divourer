@@ -19,12 +19,24 @@ function onException(error) {
     function hideElement(element) {
         hiddenElements.push({element, initialStyle: element.style})
         element.style.display = "none"
+        
+        const command = "set-badge"
+        browser.runtime.sendMessage({
+            command,
+            data: hiddenElements.length
+        })
     }
     function clearAll() {
         for(elementObject of hiddenElements) {
             elementObject.element.style = elementObject.initialStyle
         }
         hiddenElements.splice(0, hiddenElements.length)
+
+        const command = "set-badge"
+        browser.runtime.sendMessage({
+            command,
+            data: hiddenElements.length
+        })
     }
     function setHideOnClick(enabledBool) {
         hideOnClickActive = enabledBool
@@ -38,8 +50,8 @@ function onException(error) {
                 return
             }
             let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
-            if(hoverElement == document.body || hoverElement == document.documentElement) {
-                return
+            if(hoverElement == document.body || hoverElement == document.documentElement) { 
+                return 
             }
 
             const initialBackgroundColour = hoverElement.style.backgroundColor

@@ -15,7 +15,10 @@
     ],
 
     "background": {
-        "scripts": ["contextMenu.js"]
+        "scripts": [
+            "contextMenu.js", 
+            "browserAction.js"
+        ]
     },
 
     "browser_action": {

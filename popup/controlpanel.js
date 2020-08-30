@@ -61,14 +61,6 @@ function onArmButton(event) {
         active: true
     })
     .then((tabs) => {
-        browser.browserAction.setBadgeText(
-            {
-                text: "Hello???",
-                tabId: tabs[0].id
-            }
-          )
-
-
         const command = divourActive ? COMMAND.ENABLE : COMMAND.DISABLE
         if(divourActive) {
             browser.tabs.insertCSS({code: CSS_DIVOURER_ACTIVE})
@@ -138,6 +130,7 @@ browser.runtime.onMessage.addListener((message) => {
     if(dataObject != undefined) {
         divourActive = dataObject.active
         setHiddenElementsCount(dataObject.hiddenAmount)
+
         document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
     }
 })
