@@ -1,0 +1,17 @@
+:root {
+    --cursor-enabled: crosshair;
+    --size-outline: 2px;
+}
+* { 
+    cursor: var(--cursor-enabled);
+}
+*:hover {
+    cursor: var(--cursor-enabled) !important;
+}
+.divour-hover-element {
+    transition: background-color 0.2s cubic-bezier(.07,.95,0,1);
+    background-color: green !important;
+    
+    outline: var(--size-outline) solid rgba(255, 255, 0, 1);
+    outline-offset: calc(var(--size-outline) * -1);
+}

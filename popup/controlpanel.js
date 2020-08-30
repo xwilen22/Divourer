@@ -7,27 +7,7 @@ const TEXT_ARM_BUTTON_DISABLED = "Arm"
 
 const TEXT_HIDDEN_AMOUNT = "hidden elements on this tab."
 
-const POINTER_NAME = "crosshair"
-
-const CSS_DIVOURER_ACTIVE = `
-    :root {
-        --cursor-enabled: crosshair;
-        --size-outline: 2px;
-    }
-    * { 
-        cursor: var(--cursor-enabled);
-    }
-    *:hover {
-        cursor: var(--cursor-enabled) !important;
-    }
-    .divour-hover-element {
-        transition: background-color 0.2s cubic-bezier(.07,.95,0,1);
-        background-color: green !important;
-        
-        outline: var(--size-outline) solid rgba(255, 255, 0, 1);
-        outline-offset: calc(var(--size-outline) * -1);
-    }
-`
+const PATH_CSS_ACTIVE = "../divourer.css"
 
 const COMMAND = {
     GET:"get",
@@ -35,6 +15,11 @@ const COMMAND = {
     DISABLE:"disabled",
     CLEAR:"reset",
     HIDE:"hide"
+}
+const COMMAND_LOCATION = {
+    CONTENT: "loc_divourer",
+    ACTION: "loc_browser_action",
+    CONTEXT: "loc_context_menu"
 }
 
 let divourActive = false
@@ -62,20 +47,23 @@ function onArmButton(event) {
     })
     .then((tabs) => {
         const command = divourActive ? COMMAND.ENABLE : COMMAND.DISABLE
+        const location = COMMAND_LOCATION.CONTENT
         if(divourActive) {
-            browser.tabs.insertCSS({code: CSS_DIVOURER_ACTIVE})
+            browser.tabs.insertCSS({file: PATH_CSS_ACTIVE, cssOrigin: "user"})
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command
+                    command,
+                    location
                 })
                 .catch(onException)
             })
             .catch(onException)
         } else {
-            browser.tabs.removeCSS({code: CSS_DIVOURER_ACTIVE})
+            browser.tabs.removeCSS({file: PATH_CSS_ACTIVE, cssOrigin: "user"})
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command
+                    command,
+                    location
                 })
                 .catch(onException)
             })
@@ -85,27 +73,34 @@ function onArmButton(event) {
     .catch(onException);  
 }
 function onClearButton(event) {
+    const location = COMMAND_LOCATION.CONTENT
+
     browser.tabs.query({active: true, currentWindow: true})
         .then((tabs) => {
             browser.tabs.sendMessage(tabs[0].id, {
-                command: COMMAND.CLEAR
+                command: COMMAND.CLEAR,
+                location
             })
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command: COMMAND.GET
+                    command: COMMAND.GET,
+                    location
                 })
             })
         })
         .catch(onException);
 }
 function requestUIStatus() {
+    const location = COMMAND_LOCATION.CONTENT
+
     browser.tabs.query({
         currentWindow: true,
         active: true
     })
     .then(tabs => { 
         browser.tabs.sendMessage(tabs[0].id, {
-            command: COMMAND.GET
+            command: COMMAND.GET,
+            location
         })
         .catch(onException)
     })
