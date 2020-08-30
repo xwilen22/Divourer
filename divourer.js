@@ -38,10 +38,13 @@ function onException(error) {
                 return
             }
             let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
+            if(hoverElement == document.body || hoverElement == document.documentElement) {
+                return
+            }
+
             const initialBackgroundColour = hoverElement.style.backgroundColor
 
             hoverElement.classList.add(HOVER_ELEMENT_CLASS)
-            console.log("Added class: ", HOVER_ELEMENT_CLASS)
             function onMouseDown(event) {
                 event.preventDefault()
                 hideElementAtPosition(event.clientX, event.clientY)

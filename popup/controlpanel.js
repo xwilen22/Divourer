@@ -10,15 +10,22 @@ const TEXT_HIDDEN_AMOUNT = "hidden elements on this tab."
 const POINTER_NAME = "crosshair"
 
 const CSS_DIVOURER_ACTIVE = `
+    :root {
+        --cursor-enabled: crosshair;
+        --size-outline: 2px;
+    }
     * {
-        cursor: ${POINTER_NAME};
+        cursor: var(--cursor-enabled);
     }
     *:hover {
-        cursor: ${POINTER_NAME} !important;
+        cursor: var(--cursor-enabled) !important;
     }
     .divour-hover-element {
         transition: background-color 0.2s cubic-bezier(.07,.95,0,1);
         background-color: green !important;
+        
+        outline: var(--size-outline) solid rgba(255, 255, 0, 1);
+        outline-offset: calc(var(--size-outline) * -1);
     }
 `
 
