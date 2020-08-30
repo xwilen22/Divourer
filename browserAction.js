@@ -21,7 +21,4 @@ browser.runtime.onMessage.addListener((message) => {
         }
         default : onException(Error("Invalid command: ", message.command))
     }
-    if(message.command == "set-badge") {
-
-    }
 })
