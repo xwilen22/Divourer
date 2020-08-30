@@ -5,7 +5,8 @@
     --size-icon: 40px;
 }
 #popup-content {
-    width: var(--width-popup)
+    min-width: var(--width-popup);
+    width: 100%;
 }
 html, body {
     padding: 0;

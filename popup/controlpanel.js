@@ -95,7 +95,7 @@ function requestUIStatus() {
     .catch(onException)
 }
 function onException(exception) {
-    for (button of document.getElementsByTagName("button")) {
+    for (let button of document.getElementsByTagName("button")) {
         button.disabled = true
     }
     console.error(`BOLLOXED! ${exception} Stack: ${exception.stack}`)
