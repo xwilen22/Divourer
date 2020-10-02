@@ -34,26 +34,40 @@ function onArmButton(event) {
         active: true
     })
     .then((tabs) => {
-        const command = divourActive ? utils.COMMAND.ENABLE : utils.COMMAND.DISABLE
+        const commandActivateDivourer = divourActive ? utils.COMMAND.ENABLE : utils.COMMAND.DISABLE
+        const commandSetIcon = "set-icon-type"
+        
         const location = utils.COMMAND_LOCATION.CONTENT
         if(divourActive) {
             browser.tabs.insertCSS({file: PATH_CSS_ACTIVE, cssOrigin: "user"})
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command,
+                    command: commandActivateDivourer,
                     location
                 })
                 .catch(onException)
+                
+                browser.runtime.sendMessage({
+                    command: commandSetIcon,
+                    location: null,
+                    data: "active"
+                }).catch(onException)
             })
             .catch(onException)
         } else {
             browser.tabs.removeCSS({file: PATH_CSS_ACTIVE, cssOrigin: "user"})
             .then(() => {
                 browser.tabs.sendMessage(tabs[0].id, {
-                    command,
+                    command: commandActivateDivourer,
                     location
                 })
                 .catch(onException)
+
+                browser.runtime.sendMessage({
+                    command: commandSetIcon,
+                    location: null,
+                    data: null
+                }).catch(onException)
             })
             .catch(onException)
         }

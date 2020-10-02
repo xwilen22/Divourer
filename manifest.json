@@ -24,7 +24,6 @@
     },
 
     "browser_action": {
-		"browser_style": true,
         "default_icon": "icons/divour-48-active.png",
         "default_title": "Divourer",
         "default_popup": "popup/controlpanel.html",

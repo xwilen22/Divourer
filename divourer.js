@@ -8,6 +8,8 @@ function onException(error) {
     }
     window.hasRun = true
     
+    console.log("Yeah im active 👺")
+
     const HOVER_ELEMENT_CLASS = "divour-hover-element"
 
     const hiddenElements = []
