@@ -1,3 +1,5 @@
+import * as utils from "/util.mjs"
+
 function onException(error) {
     console.error(error)
 }
@@ -5,7 +7,7 @@ function onException(error) {
 browser.runtime.onMessage.addListener((message) => {
     console.log(`Message recieved! ${message.command}`)
     switch(message.command) {
-        case "set-badge" : {
+        case utils.COMMAND.SET_BADGE : {
             browser.tabs.query({
                 currentWindow: true,
                 active: true

@@ -6,7 +6,9 @@
     "description": "Removes elements by pointing and clicking",
   
     "icons": {
-        "48": "icons/divour-48.png"
+        "48": "icons/divour-48-active.png",
+        "32": "icons/divour-32-context.png",
+        "16": "icons/divour-16-context.png"
     },
     
     "permissions": [
@@ -22,9 +24,15 @@
     },
 
     "browser_action": {
-        "default_icon": "icons/divour-48.png",
+		"browser_style": true,
+        "default_icon": "icons/divour-48-active.png",
         "default_title": "Divourer",
-        "default_popup": "popup/controlpanel.html"
+        "default_popup": "popup/controlpanel.html",
+        "theme_icons": [{
+            "light": "icons/divour-32-dark.png",
+            "dark": "icons/divour-32-light.png",
+            "size": 32
+        }]
     },
 
     "content_scripts": [

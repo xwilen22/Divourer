@@ -8,9 +8,6 @@ function initializeContextMenus() {
     browser.menus.create({
         id: ID_MENU_QUICK_HIDE,
         title: "Hide Element",
-        icons: {
-            "48":"icons\divour-48.png"
-        },
         contexts: ["all"]
     })
 }

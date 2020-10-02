@@ -3,7 +3,8 @@ export const COMMAND = {
     ENABLE:"enabled",
     DISABLE:"disabled",
     CLEAR:"reset",
-    HIDE:"hide"
+    HIDE:"hide",
+    SET_BADGE:"set-badge"
 }
 export const COMMAND_LOCATION = {
     CONTENT: "loc_divourer",
