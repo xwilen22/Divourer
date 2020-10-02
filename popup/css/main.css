@@ -1,8 +1,9 @@
 :root {
-    --color-primary: green;
+    --color-primary: rgb(62, 2, 110);
+    --color-title: var(--white-100);
     --font-primary: 'Fira Sans';
     --width-popup: 20em;
-    --size-icon: 40px;
+    --size-icon: 45px;
 }
 #popup-content {
     min-width: var(--width-popup);
@@ -19,6 +20,7 @@ h1 {
     font-family: var(--font-primary);
     font-size: 28px;
     font-weight: 300;
+    color: var(--color-title)
 }
 h2 {
     font-family: var(--font-primary);
