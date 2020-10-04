@@ -128,7 +128,8 @@ window.onload = (event) => {
         if(dataObject != undefined) {
             divourActive = dataObject.active
             setHiddenElementsCount(dataObject.hiddenAmount)
-    
+            
+            setArmedEnabled(dataObject.active)
             document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
         }
     })

@@ -127,5 +127,13 @@ button:disabled.primary {
 button:disabled:hover.primary, button:disabled:active.primary {
     background-color: var(--blue-60)
 }
-
-
+/*Utilities*/
+.no-bg {
+    background-color: none;   
+}
+.no-bg:hover {
+    background-color: none;
+}
+.button-divourer-active {
+    background-color: red;
+}
