@@ -1,9 +1,9 @@
 :root {
-    --color-primary: rgb(62, 2, 110);
+    --color-primary: #281c50;
     --color-title: var(--white-100);
     --font-primary: 'Fira Sans';
     --width-popup: 20em;
-    --size-icon: 45px;
+    --size-icon: 50px;
 }
 #popup-content {
     min-width: var(--width-popup);
@@ -22,6 +22,10 @@ h1 {
     font-weight: 300;
     color: var(--color-title)
 }
+header, h1 {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
 h2 {
     font-family: var(--font-primary);
     font-size: 22px;
@@ -31,6 +35,32 @@ p {
     font-family: var(--font-primary);
     font-size: 17px;
     font-weight: 400;
+}
+a {
+    font: 400 15px/1.5 "Fira Sans"
+}
+a {
+    color: #0a84ff;
+    text-decoration: none;
+    cursor: pointer; 
+}
+a:visited {
+    color: #0060df; 
+}
+a:hover {
+    color: #0c0c0d;
+    text-decoration: underline; 
+}
+a:not([class])[href*="//"]::after {
+    background-image: url(../icon/open-in-new-16.svg);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    margin: -.3rem .15rem 0 .25rem;
+    vertical-align: middle;
+    width: 16px; 
 }
 /*Layout*/
 header {
@@ -42,17 +72,36 @@ header * {
     height: var(--size-icon);
 }
 header h1 {
-    margin: 0 0 0 0.25em;
+    margin: 0.25em 0 0 0.35em;
     text-align: center;
 }
-main, header {
-    padding: 1em;
+main, header, footer {
+    padding: 0.75em;
 }
 main {
+    padding-left: 1.5em;
     background-color: white;
 }
-ul li {
+main p {
+    margin: 0;
+}
+main ul {
+    padding: 0;
+    margin: 0;
+}
+main ul li {
     margin-top: 0.5em;
+}
+footer {
+    border-top: var(--grey-30) 1px solid;
+    background-color: var(--grey-10);
+}
+footer p {
+    display: block;
+}
+footer p, footer a {
+    margin: 0;
+    padding: 0;
 }
 /*Layout Utils*/
 .no-style {
