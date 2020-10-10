@@ -4,6 +4,9 @@
     --font-primary: 'Fira Sans';
     --width-popup: 20em;
     --size-icon: 50px;
+
+    --margin-vertical-counter: 0.75em;
+    --height-counter: 30px;
 }
 #popup-content {
     min-width: var(--width-popup);
@@ -185,4 +188,33 @@ button:disabled:hover.primary, button:disabled:active.primary {
 }
 .button-divourer-active {
     background-color: red;
+}
+.big-paragraph {
+    font-size: 25px;
+}
+.z-0 {
+    z-index: 0;
+}
+.z-1 {
+    z-index: 1;
+}
+.pos-rel {
+    position: relative;
+}
+.hidden {
+    display: none;
+}
+/*Special cases*/
+div.round-panel {
+    background-color: royalblue;
+    box-shadow: black;
+    border-radius: 25px;
+    padding: 0 var(--margin-vertical-counter) 0 var(--margin-vertical-counter);
+    min-height: var(--height-counter);
+}
+.counter-circle-bg span {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
 }
