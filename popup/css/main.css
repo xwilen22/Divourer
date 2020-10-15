@@ -82,7 +82,6 @@ main, header, footer {
     padding: 0.75em;
 }
 main {
-    padding-left: 1.5em;
     background-color: white;
 }
 main p {
@@ -117,6 +116,16 @@ img.icon {
     width: auto;
     height: var(--size-icon);
     border-radius: 2px;
+}
+/*Shadows*/
+.shadow-10 {
+    box-shadow: 0px 1px 4px rgba(12, 12, 13, 0.1);
+}
+.shadow-20 {
+    box-shadow: 0px 2px 8px rgba(12, 12, 13, 0.1);
+}
+.shadow-30 {
+    box-shadow: 0px 4px 16px rgba(12, 12, 13, 0.1);
 }
 /*Interactives*/
 /*Buttons*/
@@ -204,10 +213,13 @@ button:disabled:hover.primary, button:disabled:active.primary {
 .hidden {
     display: none;
 }
+.margin-left {
+    padding-left: 1.5em;
+}
 /*Special cases*/
 div.round-panel {
-    background-color: royalblue;
-    box-shadow: black;
+    border: 1px var(--grey-20) solid;
+    background-color: white;
     border-radius: 25px;
     padding: 0 var(--margin-vertical-counter) 0 var(--margin-vertical-counter);
     min-height: var(--height-counter);
@@ -217,4 +229,7 @@ div.round-panel {
     height: 100%;
     text-align: center;
     display: inline-block;
+}
+.button-divourer-active {
+    background-color: green !important;
 }

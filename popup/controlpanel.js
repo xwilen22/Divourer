@@ -2,15 +2,16 @@ import * as utils from "../util.mjs"
 
 const ID_BUTTON_ARM = "button_toggle_arm"
 const ID_BUTTON_CLEAR = "button_clear"
-const ID_PARAGR_HIDDEN_AMOUNT = "paragr_hidden_amount_tab"
 
 const ID_SPAN_HIDDEN_AMOUNT = "span_hidden_amount"
 const ID_SPAN_HIDDEN_POST_TEXT = "span_hidden_amount_postfix"
 
 const TEXT_ARM_BUTTON_ENABLED = "Disarm"
 const TEXT_ARM_BUTTON_DISABLED = "Arm"
+
 const TEXT_ELEMENT_SINGULAR = "element"
 const TEXT_ELEMENT_PLURAL = "elements"
+
 const TEXT_HIDDEN_AMOUNT = "hidden on this tab"
 
 const PATH_CSS_ACTIVE = "../divourer.css"
@@ -25,7 +26,6 @@ function initializeListeners() {
     clearButton.addEventListener("click", onClearButton)
 }
 function setHiddenElementsCount(amountNumber) {
-    //const paragraphElement = document.getElementById(ID_PARAGR_HIDDEN_AMOUNT)
     const countAmountSpan = document.getElementById(ID_SPAN_HIDDEN_AMOUNT)
     const postTextSpan = document.getElementById(ID_SPAN_HIDDEN_POST_TEXT)
     
