@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="css/photon-colors.css">
     <link rel="stylesheet" href="css/main.css">
-    
+    <link rel="stylesheet" href="css/slider.css">
+
     <script src="controlpanel.js" type="module" async="true"></script>
     <script src="style.js"></script>
 </head>
@@ -29,7 +30,12 @@
             <div class="margin-left">
                 <ul class="no-style">
                     <li>
-                        <button id="button_toggle_arm" class="primary">Arm/Disarm</button>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider shadow-10"></span>
+                        </label>
+                        <label id="button_toggle_arm">Arm/disarm</label>
+                        <!--<button id="button_toggle_arm" class="primary">Arm/Disarm</button>-->
                     </li>
                     <li>
                         <button id="button_clear" class="micro">Clear</button>

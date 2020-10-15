@@ -1,0 +1,44 @@
+:root {
+    --transition-speed: 0.25s;
+    --slider-height: 25px;
+    --slider-width: 50px;
+
+    --color-slider-default: teal;
+    --color-slider-active: red;
+    --color-background-default: var(--grey-30);
+}
+.switch {
+    height: var(--slider-height);
+    width: var(--slider-width);
+    display: inline-block;
+    background-color: var(--color-background-default);
+    border-radius: 20px;
+
+    border: 4px var(--color-background-default) solid;
+}
+.switch:hover {
+    cursor: pointer;
+}
+.switch input {
+    display: none;
+}
+.slider {
+    height: var(--slider-height);
+    width: var(--slider-height);
+    position: relative;
+    display: inline-block;
+
+    background-color: var(--color-slider-default);
+
+    transition: background-color var(--transition-speed) ease;
+    transition: transform var(--transition-speed) ease;
+
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--color-slider-active);
+    transform: translateX(calc(var(--slider-width) - var(--slider-height)));
+}
+input:checked + .slider:before {
+    transform: translateX(0px);
+}
