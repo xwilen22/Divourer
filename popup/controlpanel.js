@@ -8,6 +8,8 @@ const ID_SPAN_HIDDEN_POST_TEXT = "span_hidden_amount_postfix"
 const ID_INPUT_TOGGLE = "input_checkbox_arm_toggle"
 const ID_LABEL_STATUS = "label_status"
 
+const CLASS_HIDE_ON_DISABLE = "logic-hide-on-disabled"
+
 const TEXT_ARM_BUTTON_ENABLED = "Armed"
 const TEXT_ARM_BUTTON_DISABLED = "Disarmed"
 
@@ -149,6 +151,11 @@ window.onload = (event) => {
             
             document.getElementById(ID_INPUT_TOGGLE).checked = dataObject.active
             document.getElementById(ID_LABEL_STATUS).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
+            
+            for (let element of document.getElementsByClassName(CLASS_HIDE_ON_DISABLE)) {
+                console.log("Unhiding")
+                element.hidden = false
+            }
         }
     })
 }

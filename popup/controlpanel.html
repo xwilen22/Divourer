@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/slider.css">
 
-    <script src="controlpanel.js" type="module" async="true"></script>
     <script src="style.js"></script>
+    <script src="controlpanel.js" type="module" async="true"></script>
 </head>
 
 <body>
@@ -23,18 +23,18 @@
         <main>
             <div class="round-panel">
                 <p id="paragr_hidden_amount_tab">
-                    <span id="span_hidden_amount" class="big-paragraph z-1 pos-rel">999</span>
-                    <span id="span_hidden_amount_postfix" class="z-1">Currently no hidden elements</span>
+                    <span id="span_hidden_amount" class="big-paragraph z-1 pos-rel"></span>
+                    <span id="span_hidden_amount_postfix" class="z-1">Go ahead, make my day</span>
                 </p>
             </div>
-            <div class="margin-left">
+            <div class="margin-left logic-hide-on-disabled">
                 <ul class="no-style">
                     <li>
                         <label class="switch">
                             <input type="checkbox" id="input_checkbox_arm_toggle">
                             <span class="slider shadow-10"></span>
                         </label>
-                        <label id="label_status">Arm/disarm</label>
+                        <label id="label_status">Disabled</label>
                     </li>
                     <li>
                         <button id="button_clear" class="micro">Clear</button>
