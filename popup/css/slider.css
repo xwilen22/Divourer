@@ -3,8 +3,8 @@
     --slider-height: 25px;
     --slider-width: 50px;
 
-    --color-slider-default: teal;
-    --color-slider-active: red;
+    --color-slider-default: var(--grey-10);
+    --color-slider-active: #4245b3;
     --color-background-default: var(--grey-30);
 }
 .switch {

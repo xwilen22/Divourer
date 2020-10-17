@@ -5,9 +5,11 @@ const ID_BUTTON_CLEAR = "button_clear"
 
 const ID_SPAN_HIDDEN_AMOUNT = "span_hidden_amount"
 const ID_SPAN_HIDDEN_POST_TEXT = "span_hidden_amount_postfix"
+const ID_INPUT_TOGGLE = "input_checkbox_arm_toggle"
+const ID_LABEL_STATUS = "label_status"
 
-const TEXT_ARM_BUTTON_ENABLED = "Disarm"
-const TEXT_ARM_BUTTON_DISABLED = "Arm"
+const TEXT_ARM_BUTTON_ENABLED = "Armed"
+const TEXT_ARM_BUTTON_DISABLED = "Disarmed"
 
 const TEXT_ELEMENT_SINGULAR = "element"
 const TEXT_ELEMENT_PLURAL = "elements"
@@ -19,8 +21,8 @@ const PATH_CSS_ACTIVE = "../divourer.css"
 let divourActive = false
 
 function initializeListeners() {
-    const armButton = document.getElementById(ID_BUTTON_ARM)
-    armButton.addEventListener("click", onArmButton)
+    const armButton = document.getElementById(ID_INPUT_TOGGLE)
+    armButton.addEventListener("change", onArmButton)
 
     const clearButton = document.getElementById(ID_BUTTON_CLEAR)
     clearButton.addEventListener("click", onClearButton)
@@ -38,10 +40,12 @@ function setHiddenElementsCount(amountNumber) {
     countAmountSpan.innerText = retrievedNumber
 }
 function onArmButton(event) {
-    const armButton = document.getElementById(ID_BUTTON_ARM)
+    const armInputToggle = document.getElementById(ID_INPUT_TOGGLE)
 
-    divourActive = !divourActive
-    armButton.innerText = divourActive ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
+    divourActive = armInputToggle.checked
+    
+    const statusTextLabel = document.getElementById(ID_LABEL_STATUS)
+    statusTextLabel.innerText = divourActive ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
     
     browser.tabs.query({
         currentWindow: true,
@@ -143,8 +147,8 @@ window.onload = (event) => {
             divourActive = dataObject.active
             setHiddenElementsCount(dataObject.hiddenAmount)
             
-            setArmedEnabled(dataObject.active)
-            document.getElementById(ID_BUTTON_ARM).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
+            document.getElementById(ID_INPUT_TOGGLE).checked = dataObject.active
+            document.getElementById(ID_LABEL_STATUS).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
         }
     })
 }
