@@ -153,7 +153,6 @@ window.onload = (event) => {
             document.getElementById(ID_LABEL_STATUS).innerText = dataObject.active ? TEXT_ARM_BUTTON_ENABLED : TEXT_ARM_BUTTON_DISABLED
             
             for (let element of document.getElementsByClassName(CLASS_HIDE_ON_DISABLE)) {
-                console.log("Unhiding")
                 element.hidden = false
             }
         }

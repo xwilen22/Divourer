@@ -65,6 +65,11 @@ a:not([class])[href*="//"]::after {
     vertical-align: middle;
     width: 16px; 
 }
+label {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: 300;
+}
 /*Layout*/
 header {
     background-color: var(--color-primary);
@@ -211,7 +216,7 @@ button:disabled:hover.primary, button:disabled:active.primary {
     display: none;
 }
 .margin-left {
-    padding-left: 1.5em;
+    padding-left: 0.5em;
 }
 /*Special cases*/
 div.round-panel {
@@ -227,4 +232,9 @@ div.round-panel {
     height: 100%;
     text-align: center;
     display: inline-block;
+}
+#label_status {
+    display: inline-block;
+    position: absolute;
+    padding: 8px;
 }

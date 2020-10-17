@@ -1,3 +1,6 @@
+const PATH_ACTIVE_ICON = "icons/divour-48-active.png"
+const COLOUR_BADGE_BACKGROUND = "#4245b3"
+
 function onException(error) {
     console.error(error)
 }
@@ -5,7 +8,6 @@ function onException(error) {
 /*browser.tabs.executeScript({file: "/divourer.js"}).then(() => {
     console.log("Supposedly injected script... 🤠")
 }).catch(onException)*/ 
-
 
 browser.runtime.onMessage.addListener((message) => {
     console.log(`Message recieved from browser action! ${message.command}`)
@@ -21,6 +23,9 @@ browser.runtime.onMessage.addListener((message) => {
                     text: parseInt(message.data) > 0 ? String(message.data) : "",
                     tabId: tabs[0].id
                 })
+                browser.browserAction.setBadgeBackgroundColor({
+                    color: COLOUR_BADGE_BACKGROUND
+                })
             })
             .catch(onException)
             break;
@@ -35,7 +40,7 @@ browser.runtime.onMessage.addListener((message) => {
                 let imagePath = null
                 
                 if(imageType != null) {
-                    imagePath = `icons/divour-48-active.png`
+                    imagePath = PATH_ACTIVE_ICON
                 }
 
                 browser.browserAction.setIcon({
