@@ -5,7 +5,6 @@ const CLASS_HIDE_ON_DISABLE = "logic-hide-on-disabled"
 
 window.addEventListener("load", (event) => {
     for (let element of document.getElementsByClassName(CLASS_HIDE_ON_DISABLE)) {
-        console.log("Hiding")
         element.hidden = true
     }
 })

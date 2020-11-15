@@ -18,8 +18,9 @@
 
     "background": {
         "scripts": [
-            "contextMenu.js", 
-            "browserAction.js"
+            "background/contextMenu.js", 
+            "background/browserAction.js",
+            "background/availabilityCheck.js"
         ]
     },
 

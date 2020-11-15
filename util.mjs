@@ -4,7 +4,9 @@ export const COMMAND = {
     DISABLE:"disabled",
     CLEAR:"reset",
     HIDE:"hide",
-    SET_BADGE:"set-badge"
+    SET_BADGE:"set-badge",
+    DISABLE_BADGE:"set-disabled",
+    ENABLE_BADGE:"set-enabled"
 }
 export const COMMAND_LOCATION = {
     CONTENT: "loc_divourer",
