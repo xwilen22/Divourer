@@ -9,6 +9,7 @@ const ID_INPUT_TOGGLE = "input_checkbox_arm_toggle"
 const ID_LABEL_STATUS = "label_status"
 
 const CLASS_HIDE_ON_DISABLE = "logic-hide-on-disabled"
+const CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS = "logic-hide-on-no-hidden-elements"
 
 const TEXT_ARM_BUTTON_ENABLED = "Armed"
 const TEXT_ARM_BUTTON_DISABLED = "Disarmed"
