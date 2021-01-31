@@ -8,9 +8,10 @@
     --margin-vertical-counter: 0.75em;
     --height-counter: 30px;
 }
-#popup-content {
+#popup_content {
     min-width: var(--width-popup);
     width: 100%;
+    user-select: none;
 }
 html, body {
     padding: 0;

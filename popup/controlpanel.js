@@ -33,14 +33,21 @@ function initializeListeners() {
 function setHiddenElementsCount(amountNumber) {
     const countAmountSpan = document.getElementById(ID_SPAN_HIDDEN_AMOUNT)
     const postTextSpan = document.getElementById(ID_SPAN_HIDDEN_POST_TEXT)
-    
     const retrievedNumber = Number(amountNumber)
 
-    let textElement = retrievedNumber != 1 ? TEXT_ELEMENT_PLURAL : TEXT_ELEMENT_SINGULAR
+    if (Number.isInteger(retrievedNumber)) {
+        if (retrievedNumber <= 0) {
+            for (let element of document.getElementsByClassName(CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS)) {
+                element.hidden = false
+            }
+        }
 
-    postTextSpan.innerText =  ` ${textElement} ${TEXT_HIDDEN_AMOUNT}`
-    
-    countAmountSpan.innerText = retrievedNumber
+        //'Elements' or 'Element'
+        const textElement = retrievedNumber != 1 ? TEXT_ELEMENT_PLURAL : TEXT_ELEMENT_SINGULAR
+        postTextSpan.innerText =  ` ${textElement} ${TEXT_HIDDEN_AMOUNT}`
+        
+        countAmountSpan.innerText = retrievedNumber
+    }
 }
 function onArmButton(event) {
     const armInputToggle = document.getElementById(ID_INPUT_TOGGLE)
@@ -143,11 +150,12 @@ window.onload = (event) => {
         initializeListeners()
     })
     .catch(onException)
-    
+    //Gets data from injected script. Amount of hidden divs etc.
     browser.runtime.onMessage.addListener((message) => {
         let dataObject = message.data
         if(dataObject != undefined) {
             divourActive = dataObject.active
+            
             setHiddenElementsCount(dataObject.hiddenAmount)
             
             document.getElementById(ID_INPUT_TOGGLE).checked = dataObject.active
