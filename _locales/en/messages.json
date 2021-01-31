@@ -1,0 +1,18 @@
+{
+    "divourerEnabled" : {
+        "message": "Enabled",
+        "description": "Label next to toggle switch for tool indicating that Divourer is active"
+    },
+    "divourerDisabled" : {
+        "message": "Disabled",
+        "description": "Label next to toggle switch for tool indicating that Divourer is inactive"
+    },
+    "hiddenAmount" : {
+        "message": "Click notification",
+        "description": "Title of the click notification."
+    },
+    "placeholderHiddenAmount" : {
+        "message": "Go ahead, make my day",
+        "description": "Placeholder for hidden counter text. This is only shown when the tool can not be enabled"
+    }
+}

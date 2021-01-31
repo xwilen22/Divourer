@@ -1,6 +1,5 @@
 import * as utils from "../util.mjs"
 
-//const ID_BUTTON_ARM = "button_toggle_arm"
 const ID_BUTTON_CLEAR = "button_clear"
 
 const ID_SPAN_HIDDEN_AMOUNT = "span_hidden_amount"
@@ -146,6 +145,7 @@ window.onload = (event) => {
         initializeListeners()
     })
     .catch(onException)
+
     //Gets data from injected script. Amount of hidden divs etc.
     browser.runtime.onMessage.addListener((message) => {
         let dataObject = message.data

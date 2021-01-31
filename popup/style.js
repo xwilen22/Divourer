@@ -9,9 +9,6 @@ window.addEventListener("load", (event) => {
     for (let element of document.getElementsByClassName(CLASS_HIDE_ON_DISABLE)) {
         element.hidden = true
     }
-    for (let element of document.getElementsByClassName(CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS)) {
-        element.hidden = true
-    }
 })
 
 function setArmedEnabled(enabled) {

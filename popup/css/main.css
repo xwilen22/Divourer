@@ -249,7 +249,7 @@ div.round-panel {
     display: inline;
 }
 #button_clear {
-    display: inline;
+    /*display: inline;*/
     height: 32px;
 }
 #label_status {
