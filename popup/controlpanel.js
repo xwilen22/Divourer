@@ -10,11 +10,11 @@ const ID_LABEL_STATUS = "label_status"
 const CLASS_HIDE_ON_DISABLE = "logic-hide-on-disabled"
 const CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS = "logic-hide-on-no-hidden-elements"
 
-const TEXT_ARM_BUTTON_ENABLED = "Armed"
-const TEXT_ARM_BUTTON_DISABLED = "Disarmed"
-const TEXT_ELEMENT_SINGULAR = "element"
-const TEXT_ELEMENT_PLURAL = "elements"
-const TEXT_HIDDEN_AMOUNT = "hidden on this tab"
+const TEXT_ARM_BUTTON_ENABLED = browser.i18n.getMessage("divourerEnabled")//"Armed"
+const TEXT_ARM_BUTTON_DISABLED = browser.i18n.getMessage("divourerDisabled")
+const TEXT_ELEMENT_SINGULAR = browser.i18n.getMessage("elementSingular") //"element"
+const TEXT_ELEMENT_PLURAL = browser.i18n.getMessage("elementPlural")//"elements"
+const TEXT_HIDDEN_AMOUNT = browser.i18n.getMessage("hiddenAmount")//"hidden on this tab"
 
 const PATH_CSS_ACTIVE = "../divourer.css"
 

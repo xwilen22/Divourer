@@ -1,5 +1,5 @@
 const ID_MENU_QUICK_HIDE = "menu-fast-hide"
-const TEXT_QUICK_HIDE_ELEMENT = "Hide Element"
+const TEXT_QUICK_HIDE_ELEMENT = browser.i18n.getMessage("contextHideElement") //Hide Element
 
 function onException(error) {
     console.error(error)

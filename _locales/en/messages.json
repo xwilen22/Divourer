@@ -8,14 +8,8 @@
         "description": "Label next to toggle switch for tool indicating that Divourer is inactive"
     },
     "hiddenAmount" : {
-        "message": "$ELEMENT$ hidden on this tab",
-        "description": "Title of popup counting amount of hidden elements. Number is placed before eg. '1 hidden element on this tab'",
-        "placeholders": {
-            "element" : {
-              "content" : "$1",
-              "example" : "element/elements"
-            }
-        }
+        "message": "hidden on this tab",
+        "description": "Title of popup counting amount of hidden elements. Number is placed before eg. '1 hidden element on this tab'"
     },
     "elementSingular" : {
         "message": "element",

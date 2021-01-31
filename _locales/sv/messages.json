@@ -6,13 +6,7 @@
         "message": "Deaktiverad"
     },
     "hiddenAmount" : {
-        "message": "$ELEMENT$ gömda på den här fliken",
-        "placeholders": {
-            "element" : {
-              "content" : "$1",
-              "example" : "element/elements"
-            }
-        }
+        "message": "gömda på den här fliken"
     },
     "elementSingular" : {
         "message": "element"
