@@ -1,0 +1,29 @@
+{
+    "divourerEnabled" : {
+        "message": "Aktiverad"
+    },
+    "divourerDisabled" : {
+        "message": "Deaktiverad"
+    },
+    "hiddenAmount" : {
+        "message": "$ELEMENT$ gömda på den här fliken",
+        "placeholders": {
+            "element" : {
+              "content" : "$1",
+              "example" : "element/elements"
+            }
+        }
+    },
+    "elementSingular" : {
+        "message": "element"
+    },
+    "elementPlural" : {
+        "message": "element"
+    },
+    "placeholderHiddenAmount" : {
+        "message": "Så kan det gå!"
+    },
+    "contextHideElement" : {
+        "message": "Göm Element"
+    }
+}

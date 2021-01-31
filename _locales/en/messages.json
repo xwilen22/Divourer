@@ -8,11 +8,29 @@
         "description": "Label next to toggle switch for tool indicating that Divourer is inactive"
     },
     "hiddenAmount" : {
-        "message": "Click notification",
-        "description": "Title of the click notification."
+        "message": "$ELEMENT$ hidden on this tab",
+        "description": "Title of popup counting amount of hidden elements. Number is placed before eg. '1 hidden element on this tab'",
+        "placeholders": {
+            "element" : {
+              "content" : "$1",
+              "example" : "element/elements"
+            }
+        }
+    },
+    "elementSingular" : {
+        "message": "element",
+        "description": "Singular for element. Placed in hiddenAmount placeholder"
+    },
+    "elementPlural" : {
+        "message": "elements",
+        "description": "Plural for element. Placed in hiddenAmount placeholder"
     },
     "placeholderHiddenAmount" : {
         "message": "Go ahead, make my day",
         "description": "Placeholder for hidden counter text. This is only shown when the tool can not be enabled"
+    },
+    "contextHideElement" : {
+        "message": "Hide Element",
+        "description": "Context menu title for hiding element where the mouse if hovering"
     }
 }

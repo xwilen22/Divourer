@@ -1,4 +1,5 @@
 const ID_MENU_QUICK_HIDE = "menu-fast-hide"
+const TEXT_QUICK_HIDE_ELEMENT = "Hide Element"
 
 function onException(error) {
     console.error(error)
@@ -7,7 +8,7 @@ function onException(error) {
 function initializeContextMenus() {
     browser.menus.create({
         id: ID_MENU_QUICK_HIDE,
-        title: "Hide Element",
+        title: TEXT_QUICK_HIDE_ELEMENT,
         contexts: ["all"]
     })
 }
