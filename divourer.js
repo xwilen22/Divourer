@@ -82,7 +82,7 @@ function onException(error) {
     initializeEventListeners()
 
     browser.runtime.onMessage.addListener((message) => {
-        console.log(`Message recieved! ${message.command}`)
+        //console.log(`Message recieved! ${message.command}`)
         switch(message.command) {
             case "enabled" : {
                 setHideOnClick(true)
