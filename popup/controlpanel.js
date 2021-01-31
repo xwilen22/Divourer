@@ -1,6 +1,6 @@
 import * as utils from "../util.mjs"
 
-const ID_BUTTON_ARM = "button_toggle_arm"
+//const ID_BUTTON_ARM = "button_toggle_arm"
 const ID_BUTTON_CLEAR = "button_clear"
 
 const ID_SPAN_HIDDEN_AMOUNT = "span_hidden_amount"
@@ -13,10 +13,8 @@ const CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS = "logic-hide-on-no-hidden-elements"
 
 const TEXT_ARM_BUTTON_ENABLED = "Armed"
 const TEXT_ARM_BUTTON_DISABLED = "Disarmed"
-
 const TEXT_ELEMENT_SINGULAR = "element"
 const TEXT_ELEMENT_PLURAL = "elements"
-
 const TEXT_HIDDEN_AMOUNT = "hidden on this tab"
 
 const PATH_CSS_ACTIVE = "../divourer.css"
@@ -36,12 +34,10 @@ function setHiddenElementsCount(amountNumber) {
     const retrievedNumber = Number(amountNumber)
 
     if (Number.isInteger(retrievedNumber)) {
-        if (retrievedNumber <= 0) {
-            for (let element of document.getElementsByClassName(CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS)) {
-                element.hidden = false
-            }
+        for (let element of document.getElementsByClassName(CLASS_HIDE_ON_NO_HIDDEN_ELEMENTS)) {
+            element.hidden = retrievedNumber <= 0
         }
-
+        
         //'Elements' or 'Element'
         const textElement = retrievedNumber != 1 ? TEXT_ELEMENT_PLURAL : TEXT_ELEMENT_SINGULAR
         postTextSpan.innerText =  ` ${textElement} ${TEXT_HIDDEN_AMOUNT}`
