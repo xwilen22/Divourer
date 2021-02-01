@@ -19,7 +19,17 @@ function onException(error) {
         hideElement(document.elementFromPoint(x, y))
     }
     function hideElement(element) {
-        hiddenElements.push({element, initialStyle: element.style})
+        element.classList.remove(HOVER_ELEMENT_CLASS)
+        
+        hiddenElements.push({
+            element, 
+            initialStyle: element.style, 
+            initialClassName: element.className,
+            initialId: element.id
+        })
+
+        element.id = ""
+        element.className = ""
         element.style.display = "none"
         
         const command = "set-badge"
@@ -31,6 +41,8 @@ function onException(error) {
     function clearAll() {
         for(elementObject of hiddenElements) {
             elementObject.element.style = elementObject.initialStyle
+            elementObject.element.className = elementObject.initialClassName
+            elementObject.element.id = elementObject.initialId
         }
         hiddenElements.splice(0, hiddenElements.length)
 
