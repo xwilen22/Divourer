@@ -10,7 +10,7 @@ function onException(error) {
 }).catch(onException)*/ 
 
 browser.runtime.onMessage.addListener((message) => {
-    console.log(`Message recieved from browser action! ${message.command}`)
+    //console.log(`Message recieved from browser action! ${message.command}`)
     
     switch(message.command) {
         case "set-badge" : {
