@@ -1,4 +1,4 @@
-import * as utils from "../util.mjs"
+import * as utils from "../../util.mjs"
 
 const ID_BUTTON_CLEAR = "button_clear"
 

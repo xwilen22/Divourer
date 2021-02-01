@@ -24,7 +24,7 @@
         "description": "Placeholder for hidden counter text. This is only shown when the tool can not be enabled"
     },
     "contextHideElement" : {
-        "message": "Hide Element",
+        "message": "Hide element",
         "description": "Context menu title for hiding element where the mouse if hovering"
     }
 }
