@@ -9,7 +9,7 @@
     },
     "hiddenAmount" : {
         "message": "hidden on this tab",
-        "description": "Title of popup counting amount of hidden elements. Number is placed before eg. '1 hidden element on this tab'"
+        "description": "Title of popup counting amount of hidden elements. Number is placed before eg. '1 element hidden on this tab'"
     },
     "elementSingular" : {
         "message": "element",
