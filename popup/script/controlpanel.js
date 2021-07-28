@@ -135,7 +135,7 @@ function onException(exception) {
     for (let button of document.getElementsByTagName("button")) {
         button.disabled = true
     }
-    console.error(`BOLLOXED! ${exception} Stack: ${exception.stack}`)
+    console.error(`Yikes! ${exception} Stack: ${exception.stack}`)
 }
 
 window.onload = (event) => {

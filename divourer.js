@@ -8,9 +8,8 @@ function onException(error) {
     }
     window.hasRun = true
     
-    //console.log("Yeah im active 👺")
-
     const HOVER_ELEMENT_CLASS = "divour-hover-element"
+    const DISABLE_POINTER_EVENTS_CLASS = "disable-point-events"
 
     const hiddenElements = []
     let hideOnClickActive = false
@@ -58,43 +57,60 @@ function onException(error) {
     function requestHideOnClick() {
         return Boolean(hideOnClickActive)
     }
+    function onMouseOverElement(currentDocument, event) {
+        if(!requestHideOnClick()) {
+            return
+        }
+        let hoverElement = currentDocument.elementFromPoint(event.clientX, event.clientY)
+        if(hoverElement == currentDocument.body || hoverElement == currentDocument.documentElement) { 
+            return 
+        }
+        hoverElement.classList.add(HOVER_ELEMENT_CLASS)
+        
+        function onMouseDown(event) {
+            event.preventDefault()
+            hideElementAtPosition(event.clientX, event.clientY)
+            hoverElement.removeEventListener("mousedown", this)
+        }
+        function onMouseLeave(event) {
+            hoverElement.classList.remove(HOVER_ELEMENT_CLASS)
+
+            hoverElement.removeEventListener("mouseout", this)
+            hoverElement.removeEventListener("mousedown", onMouseDown)
+        }
+
+        hoverElement.addEventListener("mousedown", onMouseDown)
+        hoverElement.addEventListener("mouseout", onMouseLeave)
+    }
     function initializeEventListeners() {
         document.addEventListener("click", (event) => {
             if (requestHideOnClick()) {
                 event.preventDefault()
             }
         })
+        let iFrameElements = document.getElementsByTagName("iframe")
+        for (iFrameElement of iFrameElements) {
+            let wrapperSpan = document.createElement("div")
+
+            wrapperSpan.addEventListener("mouseover", (event) => {
+                if(!requestHideOnClick()) {
+                    return
+                }
+                wrapperSpan.childNodes[0].classList.add(DISABLE_POINTER_EVENTS_CLASS)
+            })
+
+            wrapperSpan.appendChild(iFrameElement)
+            document.body.appendChild(wrapperSpan)
+            
+        }
         document.addEventListener("mouseover", (event) => {
-            if(!requestHideOnClick()) {
-                return
-            }
-            let hoverElement = document.elementFromPoint(event.clientX, event.clientY)
-            if(hoverElement == document.body || hoverElement == document.documentElement) { 
-                return 
-            }
-
-            hoverElement.classList.add(HOVER_ELEMENT_CLASS)
-            function onMouseDown(event) {
-                event.preventDefault()
-                hideElementAtPosition(event.clientX, event.clientY)
-                hoverElement.removeEventListener("mousedown", this)
-            }
-            function onMouseLeave(event) {
-                hoverElement.classList.remove(HOVER_ELEMENT_CLASS)
-
-                hoverElement.removeEventListener("mouseout", this)
-                hoverElement.removeEventListener("mousedown", onMouseDown)
-            }
-
-            hoverElement.addEventListener("mousedown", onMouseDown)
-            hoverElement.addEventListener("mouseout", onMouseLeave)
+            onMouseOverElement(document, event)
         })
     }
 
     initializeEventListeners()
 
     browser.runtime.onMessage.addListener((message) => {
-        //console.log(`Message recieved! ${message.command}`)
         switch(message.command) {
             case "enabled" : {
                 setHideOnClick(true)
